@@ -89,7 +89,7 @@ export const reset = () => ({
     STATE CALCULATIONS
 *************************/
 
-const numberRe = new RegExp("^\\d{0,3}$");
+const numberRe = new RegExp("^\\d{0,2}$");
 export default (state = initState, action) => {
   switch(action.type){
     case SET_ATTACKERS:

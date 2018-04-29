@@ -1,23 +1,32 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import RiskDiceRoller from './Risk/RiskDiceRoller';
+import RiskDiceRoller from './components/RiskDiceRoller';
 import registerServiceWorker from './registerServiceWorker';
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-import store from './Risk/store';
+import CssBaseline from 'material-ui/CssBaseline';
+import store from './store';
+import grey from 'material-ui/colors/grey';
 
 const theme = createMuiTheme({
   palette: {
-    type: 'light',
+    type: 'dark',
+    background: {
+      default: grey[900],
+    }
   },
 });
 
 ReactDOM.render(
+  <Fragment>
     <Provider store={store}>
       <MuiThemeProvider theme={theme}>
+        <CssBaseline/>
         <RiskDiceRoller/>
       </MuiThemeProvider>
-    </Provider>, 
-document.getElementById('root'));
+    </Provider>
+  </Fragment>, 
+  document.getElementById('root')
+);
 
 registerServiceWorker();
