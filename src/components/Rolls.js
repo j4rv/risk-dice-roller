@@ -24,22 +24,25 @@ const RollResult = ({attackerRolls, defenderRolls, attackers, defenders, deadAtt
         {index}
       </Typography>
       <Typography variant="headline" align="center" gutterBottom>
-        <span style={{color:red[500]}}>
+        <span style={{color:red[400]}}>
+          <span>{attackers} </span>
           {attackerRolls.map((value) => (
             Dices[value]
           ))}
         </span>
-        <span style={{color:blue[500]}}>
+        <span> - </span>
+        <span style={{color:blue[400]}}>
           {defenderRolls.map((value) => (
             Dices[value]
           ))}
+          <span> {defenders}</span>
         </span>
       </Typography>
-      <Typography align="center">
-        Attackers: {attackers} -> {attackers - deadAttackers}
+      <Typography align="left">
+        Attackers: Lost {deadAttackers} soldiers, {attackers - deadAttackers} left.
       </Typography>
-      <Typography align="center">
-        Defenders: {defenders} -> {defenders - deadDefenders}
+      <Typography align="left">
+        Defenders: Lost {deadDefenders} soldiers, {defenders - deadDefenders} left.
       </Typography>
     </div>
   </Paper>
