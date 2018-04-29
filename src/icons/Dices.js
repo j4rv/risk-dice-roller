@@ -6,4 +6,5 @@ import dice_5 from './dice_5.svg';
 import dice_6 from './dice_6.svg';*/
 
 //export default [dice_1, dice_2, dice_3, dice_4, dice_5, dice_6];
-export default ["[1]", "[2]", "[3]", "[4]", "[5]", "[6]"];
+//export default ["[1]", "[2]", "[3]", "[4]", "[5]", "[6]"];
+export default "⚀⚁⚂⚃⚄⚅".split("");

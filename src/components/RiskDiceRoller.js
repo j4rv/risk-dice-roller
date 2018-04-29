@@ -7,7 +7,6 @@ import Rolls from './Rolls';
 const styles = theme => ({
   root: {
     width: "100%",
-    margin: theme.spacing.unit,
     padding: theme.spacing.unit,
     display: "flex",
     flexDirection: "column",

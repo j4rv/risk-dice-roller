@@ -12,17 +12,21 @@ const styles = theme => ({
   },
 });
 
+const moreAttackersThanDefenders = (attackers, defenders) => (
+  parseInt(attackers, 10) >= (defenders, 10)
+)
+
 const getAttackers = (attackers, defenders) => {
-  const icon = attackers >= defenders ? "mood" : "mood_bad";
+  const icon = moreAttackersThanDefenders(attackers, defenders) ? "mood" : "mood_bad";
   return Array.apply(null, { length: attackers }).map((e, i) => (
     <Icon style={{color:red[400]}} key={`attacker-${i}`}>{icon}</Icon>
   ))
 }
 
 const getDefenders = (attackers, defenders) => {
-  const icon = defenders >= attackers ? "mood" : "mood_bad";
+  const icon = moreAttackersThanDefenders(attackers, defenders) ? "mood_bad" : "mood";
   return Array.apply(null, { length: defenders }).map((e, i) => (
-    <Icon style={{color:blue[400]}} key={`attacker-${i}`}>{icon}</Icon>
+    <Icon style={{color:blue[400]}} key={`defender-${i}`}>{icon}</Icon>
   ))
 }
 

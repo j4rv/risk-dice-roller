@@ -12,7 +12,8 @@ const styles = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
-    width: 128
+    padding: theme.spacing.unit*2,
+    width: 112
   },
 });
 
@@ -24,15 +25,19 @@ const RiskForm = ({
   <Grid container justify="center" className={classes.container}>
     <SoldiersInput className={classes.textField} title="attackers" value={attackers} inputChangeHandler={setAttackers}/>
     <SoldiersInput className={classes.textField} title="defenders" value={defenders} inputChangeHandler={setDefenders}/>
-    <Button variant="raised" color="primary" onClick={battleOnce} className={classes.button}>
-      Fight!
-    </Button>
-    <Button variant="raised" color="primary" onClick={battleToDeath} className={classes.button}>
-      To death!
-    </Button>
-    <Button variant="raised" color="secondary" onClick={reset} className={classes.button}>
-      Reset
-    </Button>
+    <Grid item>
+      <Grid container justify="center">
+        <Button variant="raised" color="primary" onClick={battleOnce} className={classes.button}>
+          Fight!
+        </Button>
+        <Button variant="raised" color="primary" onClick={battleToDeath} className={classes.button}>
+          To death!
+        </Button>
+        <Button variant="raised" color="secondary" onClick={reset} className={classes.button}>
+          Reset
+        </Button>
+      </Grid>
+    </Grid>
   </Grid>
 )
 
