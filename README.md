@@ -5,3 +5,4 @@ Made with:
 * [Redux](https://redux.js.org/)
 * [React-Redux](https://github.com/reactjs/react-redux)
 * [Material-UI-next](https://material-ui-next.com/)
+* [Skull icon by JapanYoshi](https://materialdesignicons.com/)

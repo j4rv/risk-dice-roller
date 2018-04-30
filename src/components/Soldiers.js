@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Icon from 'material-ui/Icon';
-import Zoom from 'material-ui/transitions/Zoom';
 import red from 'material-ui/colors/red';
 import blue from 'material-ui/colors/blue';
 import { withStyles } from 'material-ui/styles';
@@ -38,13 +37,13 @@ const getArmy = (army, enemies, armyKey, className) => {
   const icon = moreSoldiersThanEnemies(army, enemies) ? "mood" : "mood_bad";
   return (
     army ? 
-      <Zoom in><div className={className}>
+      <div className={className}>
         {
           Array.apply(null, { length: army }).map((e, i) => (
             <Icon key={`${armyKey}-${i}`}>{icon}</Icon>
           ))
         }
-      </div></Zoom>
+      </div>
     : null
   )
 }
