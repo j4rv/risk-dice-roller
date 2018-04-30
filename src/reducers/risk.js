@@ -2,6 +2,7 @@ const initState = {
   attackers: 1,
   defenders: 1,
   rolls: [],
+  showRolls: false,
 }
 
 const SET_ATTACKERS = "SET_ATTACKERS";
@@ -9,6 +10,7 @@ const SET_DEFENDERS = "SET_DEFENDERS";
 const BATTLE_ONCE = "BATTLE_ONCE";
 const BATTLE_TO_DEATH = "BATTLE_TO_DEATH";
 const RESET = "RESET";
+const TOGGLE_SHOW_ROLLS = "TOGGLE_SHOW_ROLLS";
 
 const rollDice = () => (
   Math.floor(Math.random() * 6)
@@ -81,6 +83,10 @@ export const battleToDeath = () => ({
   type: BATTLE_TO_DEATH,
 })
 
+export const toggleShowRolls = () => ({
+  type: TOGGLE_SHOW_ROLLS,
+})
+
 export const reset = () => ({
   type: RESET,
 })
@@ -104,6 +110,8 @@ export default (state = initState, action) => {
     case BATTLE_TO_DEATH:
       if(bothHaveSoldiers(state)===false) return state;
       return {...state, ...calculateBattleToDeath(state)};
+    case TOGGLE_SHOW_ROLLS:
+      return {...state, showRolls: !state.showRolls};
     case RESET:
       return initState;
     default:

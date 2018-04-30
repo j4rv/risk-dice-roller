@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Icon from 'material-ui/Icon';
+import Zoom from 'material-ui/transitions/Zoom';
 import red from 'material-ui/colors/red';
 import blue from 'material-ui/colors/blue';
 import { withStyles } from 'material-ui/styles';
@@ -15,32 +16,44 @@ const styles = theme => ({
   soldiers: {
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
+    display: "flex",
+  },
+  attackers: {
+    margin: theme.spacing.unit,
+    color: red[500],
+    textAlign: "center",
+  },  
+  defenders: {
+    margin: theme.spacing.unit,
+    color: blue[500],
+    textAlign: "center",
   },
 });
 
-const moreAttackersThanDefenders = (attackers, defenders) => (
-  parseInt(attackers, 10) >= parseInt(defenders, 10)
+const moreSoldiersThanEnemies = (army, enemies) => (
+  parseInt(army, 10) >= parseInt(enemies, 10)
 )
 
-const getAttackers = (attackers, defenders) => {
-  const icon = moreAttackersThanDefenders(attackers, defenders) ? "mood" : "mood_bad";
-  return Array.apply(null, { length: attackers }).map((e, i) => (
-    <Icon style={{color:red[500]}} key={`attacker-${i}`}>{icon}</Icon>
-  ))
-}
-
-const getDefenders = (attackers, defenders) => {
-  const icon = moreAttackersThanDefenders(attackers, defenders) ? "mood_bad" : "mood";
-  return Array.apply(null, { length: defenders }).map((e, i) => (
-    <Icon style={{color:blue[500]}} key={`defender-${i}`}>{icon}</Icon>
-  ))
+const getArmy = (army, enemies, armyKey, className) => {
+  const icon = moreSoldiersThanEnemies(army, enemies) ? "mood" : "mood_bad";
+  return (
+    army ? 
+      <Zoom in><div className={className}>
+        {
+          Array.apply(null, { length: army }).map((e, i) => (
+            <Icon key={`${armyKey}-${i}`}>{icon}</Icon>
+          ))
+        }
+      </div></Zoom>
+    : null
+  )
 }
 
 const Soldiers = ({attackers, defenders, classes}) => (
   <div className={classes.container} >
     <div className={classes.soldiers}>
-      { getAttackers(attackers, defenders) }
-      { getDefenders(attackers, defenders) }
+      { getArmy(attackers, defenders, "attackers", classes.attackers) }
+      { getArmy(defenders, attackers, "defenders", classes.defenders) }
     </div>
   </div>
 );

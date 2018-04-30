@@ -6,20 +6,24 @@ import Rolls from './Rolls';
 
 const styles = theme => ({
   root: {
-    width: "100%",
     padding: theme.spacing.unit,
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column-reverse",
     alignItems: "center",
-    justifyContent: "center",
+    width: "100vw",
+    minHeight: "100vh",
+    [theme.breakpoints.up('md')]: {
+      flexDirection: "column",
+    },
   },
+  
 });
 
 const RiskDiceRoller = ({classes}) => (
   <div className={classes.root}>
+    <Rolls/>
     <RiskForm/>
     <Soldiers/>
-    <Rolls/>
   </div>
 )
 

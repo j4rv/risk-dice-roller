@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Zoom from 'material-ui/transitions/Zoom';
+import Collapse from 'material-ui/transitions/Collapse';
 import red from 'material-ui/colors/red';
 import blue from 'material-ui/colors/blue';
 import Typography from 'material-ui/Typography';
@@ -15,15 +16,16 @@ const styles = theme => ({
     flexWrap: "wrap",
     justifyContent: "center",
   },
-  rollResult: {
+  roll: {
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
     width: theme.spacing.unit * 30,
   }
 });
 
-const RollResult = ({attackerRolls, defenderRolls, attackers, defenders, deadAttackers, deadDefenders, index, className}) => (
-  <Zoom in style={{ transitionDelay: index*20 }}>
+const RollResult = ({attackerRolls, defenderRolls, attackers, defenders, deadAttackers, deadDefenders, index, show, className}) => (
+  <Zoom in={show} 
+    style={show ? { transitionDelay: index*20 } : {}}>
     <Paper className={className}>
       <div>
         <Typography variant="caption" align="right">
@@ -55,16 +57,18 @@ const RollResult = ({attackerRolls, defenderRolls, attackers, defenders, deadAtt
   </Zoom>
 )
 
-const Rolls = ({rolls, classes}) => (
+const Rolls = ({rolls, classes, show}) => (
+  <Collapse in={show}>
   <div className={classes.container}>
     {
       rolls.map((roll, i) => (
-        <RollResult key={`roll-${i}`} {...roll} index={i+1} className={classes.rollResult}/>
+        <RollResult key={`roll-${i}`} {...roll} index={i+1} show={show} className={classes.roll}/>
       ))
     }
   </div>
+  </Collapse>
 );
 
 export default connect(
-  state => ({rolls: state.rolls}),
+  state => ({rolls: state.rolls, show: state.showRolls}),
 )(withStyles(styles)(Rolls));

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
 import SoldiersInput from './SoldiersInput';
-import {setAttackers, setDefenders, battleOnce, battleToDeath, reset} from '../reducers/risk';
+import {setAttackers, setDefenders, battleOnce, battleToDeath, reset, toggleShowRolls} from '../reducers/risk';
 
 const styles = theme => ({
   container: {
@@ -20,8 +20,8 @@ const styles = theme => ({
 });
 
 const RiskForm = ({
-    attackers, defenders, // state
-    setAttackers, setDefenders, battleOnce, battleToDeath, reset, // actions
+    attackers, defenders, showRolls,// state
+    setAttackers, setDefenders, battleOnce, battleToDeath, reset, toggleShowRolls,// actions
     classes // style
   }) => (
   <div className={classes.container}>
@@ -37,11 +37,14 @@ const RiskForm = ({
       <Button variant="raised" color="secondary" onClick={reset} className={classes.button}>
         Reset
       </Button>
+      <Button onClick={toggleShowRolls} className={classes.button}>
+        {showRolls ? "Hide rolls" : "Show rolls"}
+      </Button>
     </div>
   </div>
 )
 
 export default connect(
-  state => ({attackers:state.attackers, defenders: state.defenders}),
-  {setAttackers, setDefenders, battleOnce, battleToDeath, reset}
+  state => ({attackers:state.attackers, defenders: state.defenders, showRolls: state.showRolls}),
+  {setAttackers, setDefenders, battleOnce, battleToDeath, reset, toggleShowRolls}
 )(withStyles(styles)(RiskForm));
