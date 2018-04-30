@@ -7,23 +7,16 @@ import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
   container: {
-    padding: theme.spacing.unit,
     display: "flex",
-    flexWrap: "wrap",
     justifyContent: "center",
   },
-  soldiers: {
-    margin: theme.spacing.unit,
-    padding: theme.spacing.unit,
-    display: "flex",
-  },
   attackers: {
-    margin: theme.spacing.unit,
+    padding: theme.spacing.unit,
     color: red[500],
     textAlign: "center",
   },  
   defenders: {
-    margin: theme.spacing.unit,
+    padding: theme.spacing.unit,
     color: blue[500],
     textAlign: "center",
   },
@@ -50,10 +43,8 @@ const getArmy = (army, enemies, armyKey, className) => {
 
 const Soldiers = ({attackers, defenders, classes}) => (
   <div className={classes.container} >
-    <div className={classes.soldiers}>
-      { getArmy(attackers, defenders, "attackers", classes.attackers) }
-      { getArmy(defenders, attackers, "defenders", classes.defenders) }
-    </div>
+    { getArmy(attackers, defenders, "attackers", classes.attackers) }
+    { getArmy(defenders, attackers, "defenders", classes.defenders) }
   </div>
 );
 
