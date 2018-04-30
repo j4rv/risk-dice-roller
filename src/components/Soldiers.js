@@ -1,11 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Icon, Grid} from 'material-ui';
+import Icon from 'material-ui/Icon';
 import red from 'material-ui/colors/red';
 import blue from 'material-ui/colors/blue';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
+  container: {
+    padding: theme.spacing.unit,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
   soldiers: {
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
@@ -31,12 +37,12 @@ const getDefenders = (attackers, defenders) => {
 }
 
 const Soldiers = ({attackers, defenders, classes}) => (
-  <Grid container justify="center" >
+  <div className={classes.container} >
     <div className={classes.soldiers}>
       { getAttackers(attackers, defenders) }
       { getDefenders(attackers, defenders) }
     </div>
-  </Grid>
+  </div>
 );
 
 export default connect(
