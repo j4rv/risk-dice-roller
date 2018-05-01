@@ -113,7 +113,7 @@ export default (state = initState, action) => {
     case TOGGLE_SHOW_ROLLS:
       return {...state, showRolls: !state.showRolls};
     case RESET:
-      return initState;
+      return {...initState, showRolls: state.showRolls};
     default:
       return state;
   }

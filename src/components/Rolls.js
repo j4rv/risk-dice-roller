@@ -77,7 +77,7 @@ const RollResult = ({attackerRolls, defenderRolls, attackers, defenders, deadAtt
 )
 
 const Rolls = ({rolls, classes, show}) => (
-  <Collapse in={show}>
+  <Collapse in={show && rolls.length > 0}>
   <div className={classes.container}>
     {
       rolls.map((roll, i) => (
