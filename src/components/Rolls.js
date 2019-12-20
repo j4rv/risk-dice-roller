@@ -15,11 +15,12 @@ const styles = theme => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    fontSize: theme.typography.fontSize,
   },
   roll: {
     margin: theme.spacing.unit,
     padding: theme.spacing.unit,
-    width: theme.spacing.unit * 18,
+    width: theme.spacing.unit * 20,
     position: "relative",
   },
   red: {
@@ -28,19 +29,15 @@ const styles = theme => ({
   blue: {
     color: blue[500],
   },
-  datetime: {
-    color: grey[500],
-    fontSize: theme.typography.fontSize * 0.8,
-  },
   index: {
     color: grey[500],
-    fontSize: theme.typography.fontSize,
+    fontSize: theme.typography.fontSize * 0.8,
     position: "absolute",
     right: theme.spacing.unit,
   },
   dices: {
+    fontSize: theme.typography.fontSize * 2,
     padding: theme.spacing.unit,
-    fontSize: "1.5em",
     textAlign: "center",
   },
 })
@@ -59,10 +56,9 @@ const RollResult = ({
   <Paper className={classes.roll}>
     <div>
       <Typography variant="title" align="center">
-        <div className={classes.datetime}>
+        <div className={classes.index}>
           {`${moment.getHours()}h ${moment.getMinutes()}m ${moment.getSeconds()}s`}
         </div>
-        <div className={classes.index}>{index}</div>
         <span className={classes.red}>
           <span>{attackers} </span>
         </span>

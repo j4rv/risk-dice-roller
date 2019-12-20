@@ -54,7 +54,7 @@ const RiskForm = ({
     />
     <div className={classes.container}>
       <Button
-        variant="raised"
+        variant="contained"
         color="primary"
         onClick={battleOnce}
         className={classes.button}
@@ -62,7 +62,7 @@ const RiskForm = ({
         Fight!
       </Button>
       <Button
-        variant="raised"
+        variant="contained"
         color="primary"
         onClick={battleToDeath}
         className={classes.button}
@@ -70,7 +70,7 @@ const RiskForm = ({
         To death!
       </Button>
       <Button
-        variant="raised"
+        variant="contained"
         color="secondary"
         onClick={reset}
         className={classes.button}
