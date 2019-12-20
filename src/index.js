@@ -1,12 +1,13 @@
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import React, {Fragment} from 'react';
-import ReactDOM from 'react-dom';
+
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {Provider} from 'react-redux';
+import ReactDOM from 'react-dom';
 import RiskDiceRoller from './components/RiskDiceRoller';
+import grey from '@material-ui/core/colors/grey';
 import registerServiceWorker from './registerServiceWorker';
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-import CssBaseline from 'material-ui/CssBaseline';
 import store from './store';
-import grey from 'material-ui/colors/grey';
 
 const theme = createMuiTheme({
   palette: {
